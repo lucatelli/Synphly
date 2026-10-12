@@ -1,0 +1,18 @@
+# Dataset: 11A-231_sb4456035_2_000.55756.94001258102_S
+# Archived from the v0.5.1 config.ini, lines 299-329 (commented block).
+# The archived block only held [globals], [sources]; all other keys take the defaults of
+#   configs/template.toml (the v0.5 run used whatever the rest of config.ini held then).
+
+[globals]
+experiment_name = "11A-231_sb4456035_2_000.55756.94001258102_S"
+working_directory = "/home/lucatelli/astronomical_data/LIRGI_Sample_v2/Arp220/VLA_A_S/11A-231_sb4456035_2_000.55756.94001258102_Sy_v5/"
+asdm_file = "/home/lucatelli/astronomical_data/LIRGI_Sample_v2/Arp220/VLA_A_S/11A-231_sb4456035_2_000.55756.94001258102_Sy_v5/11A-231_sb4456035_2_000.55756.94001258102_S"
+do_hanning = true
+
+[sources]
+flux_calibrator = "1331+305=3C286"
+bandpass_calibrator = "1331+305=3C286"
+phase_calibrator = "J1513+2338"
+target = "ARP220"
+transfer = "0,1"
+reference = "0"

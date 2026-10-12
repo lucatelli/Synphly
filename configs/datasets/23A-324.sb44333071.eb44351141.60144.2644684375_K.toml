@@ -1,0 +1,17 @@
+# Dataset: 23A-324.sb44333071.eb44351141.60144.2644684375_K
+# Archived from the v0.5.1 config.ini, lines 417-446 (commented block).
+# The archived block only held [globals], [sources]; all other keys take the defaults of
+#   configs/template.toml (the v0.5 run used whatever the rest of config.ini held then).
+
+[globals]
+experiment_name = "23A-324.sb44333071.eb44351141.60144.2644684375_K"
+working_directory = "/home/lucatelli/astronomical_data/LIRGI_Sample_v2/processing/NGC6670/VLA_A_K/23A-324.sb44333071.eb44351141.60144.2644684375_Sy_v5/"
+asdm_file = "/home/lucatelli/astronomical_data/LIRGI_Sample_v2/processing/NGC6670/VLA_A_K/23A-324.sb44333071.eb44351141.60144.2644684375_Sy_v5/23A-324.sb44333071.eb44351141.60144.2644684375_K"
+
+[sources]
+flux_calibrator = "1331+305=3C286"
+bandpass_calibrator = "1331+305=3C286"
+phase_calibrator = "J2022+6136"
+target = "NGC6670"
+transfer = "0,1"
+reference = "0"

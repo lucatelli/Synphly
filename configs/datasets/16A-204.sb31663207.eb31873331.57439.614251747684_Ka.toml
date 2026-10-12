@@ -1,0 +1,17 @@
+# Dataset: 16A-204.sb31663207.eb31873331.57439.614251747684_Ka
+# Archived from the v0.5.1 config.ini, lines 2-30 (commented block).
+# The archived block only held [globals], [sources]; all other keys take the defaults of
+#   configs/template.toml (the v0.5 run used whatever the rest of config.ini held then).
+
+[globals]
+experiment_name = "16A-204.sb31663207.eb31873331.57439.614251747684_Ka"
+working_directory = "/media/sagauga/void/astronomical-data/SED_study/IRAS17208-0014/VLA_C_Ka/16A-204.sb31663207.eb31873331.57439.614251747684/"
+asdm_file = "/media/sagauga/void/astronomical-data/SED_study/IRAS17208-0014/VLA_C_Ka/16A-204.sb31663207.eb31873331.57439.614251747684/16A-204.sb31663207.eb31873331.57439.614251747684_Ka"
+
+[sources]
+flux_calibrator = "1331+305=3C286"
+bandpass_calibrator = "1331+305=3C286"
+phase_calibrator = "J1733-1304,J1733-1304,J1743-0350,J1743-0350,J1743-0350,J1851+0035,J2050+0407,J1924+1540"
+target = "IRAS F16516-09,IRAS F17138-10,IRAS F17207-00,IRAS 17578-040,IRAS 18090+013,IRAS F19297-04,NGC 6926,IRAS19542+1110"
+transfer = "0,1,4,8,11,14"
+reference = "0"

@@ -1,0 +1,11 @@
+# 21A-024 K-band spw-subset regression copy for v0.6 (regression/v06).
+# Same settings as the active v0.5.1 config.ini, pointed at the regression MS.
+# Run: python -m synphly run configs/datasets/21A-024_K_sub_v06.toml
+
+[globals]
+experiment_name = "21A-024.sb39746934.eb40140855.59469.05998622686_K_sub"
+working_directory = "/media/sagauga/galnet/Sy_v6_test/regression/v06/"
+asdm_file = "/media/sagauga/galnet/Sy_v6_test/regression/v06/21A-024.sb39746934.eb40140855.59469.05998622686_K_sub"
+
+[calibrate]
+band = "K"

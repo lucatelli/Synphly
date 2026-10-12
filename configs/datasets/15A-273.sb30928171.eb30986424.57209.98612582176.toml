@@ -1,0 +1,19 @@
+# Dataset: 15A-273.sb30928171.eb30986424.57209.98612582176
+# Archived from the v0.5.1 config.ini, lines 919-949 (commented block).
+# The archived block only held [globals], [sources]; all other keys take the defaults of
+#   configs/template.toml (the v0.5 run used whatever the rest of config.ini held then).
+# Original note: phase_calibrator = J1056+7011 (ca,J1058+0133 (ca,J1130+3815 (ca,J1150+2417
+#   (ca,J1436+6336 (ca,J1513+2338 (ca,J1549+5038 (ca,J1629+6757 (ca
+
+[globals]
+experiment_name = "15A-273.sb30928171.eb30986424.57209.98612582176"
+working_directory = "/mnt/scratch/lucatelli/astronomical-data/other_interesting_sources/PLCKG165.7/VLA_A_L/15A-273.sb30928171.eb30986424.57209.98612582176_Sy_v5/"
+asdm_file = "/mnt/scratch/lucatelli/astronomical-data/other_interesting_sources/PLCKG165.7/VLA_A_L/15A-273.sb30928171.eb30986424.57209.98612582176_Sy_v5/15A-273.sb30928171.eb30986424.57209.98612582176"
+
+[sources]
+flux_calibrator = "1331+305=3C286"
+bandpass_calibrator = "1331+305=3C286"
+phase_calibrator = "2,4,6,8,11,13,15,17"
+target = "G145.2+50.9,G244.8+54.9,G165.7+67.0,G231.3+72.2,G102.1+53.6,G045.1+61.1,G080.2+49.8,G092.5+42.9"
+transfer = "2,4,6,8,10,11,13,15,17"
+reference = "10"

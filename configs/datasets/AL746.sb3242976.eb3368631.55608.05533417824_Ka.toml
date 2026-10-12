@@ -1,0 +1,17 @@
+# Dataset: AL746.sb3242976.eb3368631.55608.05533417824_Ka
+# Archived from the v0.5.1 config.ini, lines 210-239 (commented block).
+# The archived block only held [globals], [sources]; all other keys take the defaults of
+#   configs/template.toml (the v0.5 run used whatever the rest of config.ini held then).
+
+[globals]
+experiment_name = "AL746.sb3242976.eb3368631.55608.05533417824_Ka"
+working_directory = "/home/lucatelli/astronomical_data/LIRGI_Sample_v2/IRASF23365+3604/VLA_C_Ka/AL746.sb3242976.eb3368631.55608.05533417824_Sy_v5/"
+asdm_file = "/home/lucatelli/astronomical_data/LIRGI_Sample_v2/IRASF23365+3604/VLA_C_Ka/AL746.sb3242976.eb3368631.55608.05533417824_Sy_v5/AL746.sb3242976.eb3368631.55608.05533417824_Ka"
+
+[sources]
+flux_calibrator = "3C48"
+bandpass_calibrator = "3C48"
+phase_calibrator = "J2330+3348,J0141-0928,J0117+1418,J0139+1753"
+target = "IRASF23365+360,IRASF01364-104,CGCG436-030,IIIZw035"
+transfer = "0,2,5,8,11"
+reference = "0"

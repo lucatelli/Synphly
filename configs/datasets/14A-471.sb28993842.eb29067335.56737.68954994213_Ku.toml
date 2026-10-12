@@ -1,0 +1,17 @@
+# Dataset: 14A-471.sb28993842.eb29067335.56737.68954994213_Ku
+# Archived from the v0.5.1 config.ini, lines 738-768 (commented block).
+# The archived block only held [globals], [sources]; all other keys take the defaults of
+#   configs/template.toml (the v0.5 run used whatever the rest of config.ini held then).
+
+[globals]
+experiment_name = "14A-471.sb28993842.eb29067335.56737.68954994213_Ku"
+working_directory = "/mnt/scratch/lucatelli/astronomical-data/SED_study/IRAS22491-1808/VLA_A_Ku/14A-471.sb28993842.eb29067335.56737.68954994213_Sy_v5/"
+asdm_file = "/mnt/scratch/lucatelli/astronomical-data/SED_study/IRAS22491-1808/VLA_A_Ku/14A-471.sb28993842.eb29067335.56737.68954994213_Sy_v5/14A-471.sb28993842.eb29067335.56737.68954994213_Ku"
+
+[sources]
+flux_calibrator = "0137+331=3C48"
+bandpass_calibrator = "0137+331=3C48"
+phase_calibrator = "J2246-1206,J2246-1206,J2253+1608,J2334+0736,J2327+0940,J2327+0940,J2320+0513,J2320+0513,J2358-1020,J2139+1423"
+target = "ESO 602-G025,IRAS F22491-18,CGCG 453-062,NGC 7469,NGC 7591,NGC 7674,NGC 7679,NGC 7592,MCG -01-60-022,IIZw096"
+transfer = "0,1,4,7,9,10,15,17"
+reference = "0"

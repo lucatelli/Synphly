@@ -1,0 +1,17 @@
+# Dataset: 23A-375.sb44182394.eb44351143.60144.30341679398_Ka
+# Archived from the v0.5.1 config.ini, lines 359-387 (commented block).
+# The archived block only held [globals], [sources]; all other keys take the defaults of
+#   configs/template.toml (the v0.5 run used whatever the rest of config.ini held then).
+
+[globals]
+experiment_name = "23A-375.sb44182394.eb44351143.60144.30341679398_Ka"
+working_directory = "/media/sagauga/void/astronomical-data/LIRGI_Sample_v2/processing/Mrk331/VLA_A_Ka/23A-375.sb44182394.eb44351143.60144.30341679398_Sy_v5/"
+asdm_file = "/media/sagauga/void/astronomical-data/LIRGI_Sample_v2/processing/Mrk331/VLA_A_Ka/23A-375.sb44182394.eb44351143.60144.30341679398_Sy_v5/23A-375.sb44182394.eb44351143.60144.30341679398_Ka"
+
+[sources]
+flux_calibrator = "3C48"
+bandpass_calibrator = "3C48"
+phase_calibrator = "J2340+2641,J0019+2602,J2033+2146,J2355+4950,J2358+1955,J2358+1955,J0019+7327,J0148+3854"
+target = "2,4,7,9,12,13,15,17"
+transfer = "0,1,3,6,8,11,14,16"
+reference = "0"

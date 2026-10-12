@@ -1,0 +1,17 @@
+# Dataset: 15A-101.sb30818715.eb30967105.57196.24457724537_Ka
+# Archived from the v0.5.1 config.ini, lines 151-179 (commented block).
+# The archived block only held [globals], [sources]; all other keys take the defaults of
+#   configs/template.toml (the v0.5 run used whatever the rest of config.ini held then).
+
+[globals]
+experiment_name = "15A-101.sb30818715.eb30967105.57196.24457724537_Ka"
+working_directory = "/home/lucatelli/astronomical_data/LIRGI_Sample_v2/Mrk231/VLA_A_Ka/15A-101.sb30818715.eb30967105.57196.24457724537/15A-101/observation.57196.24459201389/"
+asdm_file = "/home/lucatelli/astronomical_data/LIRGI_Sample_v2/Mrk231/VLA_A_Ka/15A-101.sb30818715.eb30967105.57196.24457724537/15A-101/observation.57196.24459201389/15A-101.sb30818715.eb30967105.57196.24457724537_Ka"
+
+[sources]
+flux_calibrator = "1331+305=3C286"
+bandpass_calibrator = "J1230+1223"
+phase_calibrator = "J1302+5748"
+target = "Mrk231"
+transfer = "0,1,2"
+reference = "1"

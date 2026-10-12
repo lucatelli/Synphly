@@ -1,0 +1,9 @@
+# Dataset: 23A-324.sb44337357.eb44394913.60155.565960300926_K
+# Archived from the v0.5.1 config.ini, lines 889-918 (commented block).
+# The archived block only held [globals], [sources]; all other keys take the defaults of
+#   configs/template.toml (the v0.5 run used whatever the rest of config.ini held then).
+
+[globals]
+experiment_name = "23A-324.sb44337357.eb44394913.60155.565960300926_K"
+working_directory = "/media/sagauga/galnet/astronomical-data/LIRGI_Sample_v2/UGC05101/VLA_A_K/23A-324.sb44337357.eb44394913.60155.565960300926_Sy_v5/"
+asdm_file = "/media/sagauga/galnet/astronomical-data/LIRGI_Sample_v2/UGC05101/VLA_A_K/23A-324.sb44337357.eb44394913.60155.565960300926_Sy_v5/23A-324.sb44337357.eb44394913.60155.565960300926_K"

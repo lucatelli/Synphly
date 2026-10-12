@@ -1,0 +1,31 @@
+# Dataset: 12B-184.sb13717668.eb13821966.56236.517757222224_Q
+# Archived from the v0.5.1 config.ini, lines 982-1011 (commented block).
+# The archived block only held [globals], [sources]; all other keys take the defaults of
+#   configs/template.toml (the v0.5 run used whatever the rest of config.ini held then).
+
+[globals]
+experiment_name = "12B-184.sb13717668.eb13821966.56236.517757222224_Q"
+working_directory = "/media/sagauga/void/astronomical-data/NGC4278/VLA_A_Q/12B-184.sb13717668.eb13821966.56236.517757222224/12B-184.sb13717668.eb13821966.56236.517757222224/"
+asdm_file = "/media/sagauga/void/astronomical-data/NGC4278/VLA_A_Q/12B-184.sb13717668.eb13821966.56236.517757222224/12B-184.sb13717668.eb13821966.56236.517757222224/12B-184.sb13717668.eb13821966.56236.517757222224_Q"
+
+[sources]
+flux_calibrator = "J1331+3030"
+bandpass_calibrator = "J1331+3030"
+phase_calibrator = "J1221+2813,J0958+6533"
+target = "NGC4278,NGC3031"
+transfer = "2,4,7,9"
+reference = "2"
+
+# --- todos_and_improvements/05_dataset_notes_12B-184.md, "Config that works" ---
+# transfer is kept explicit: selecting by name would include field 3 (J1221+2813 pointing scan).
+# Field 3 (scan 29, CALIBRATE_POINTING) must be flagged: do_flag_pointing_scans only acts with
+# do_pre_flagging = true. 16 spws within 41.454-41.514 GHz (fractional bandwidth 0.0015), so
+# fluxscale fitorder 'auto' selects 0.
+
+[flagging]
+do_pre_flagging = true
+do_flag_pointing_scans = true
+
+[calibrate]
+# Q band (41.5 GHz); the same as the automatic guess from the frequency.
+band = "Q"

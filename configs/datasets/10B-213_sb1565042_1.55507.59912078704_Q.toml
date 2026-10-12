@@ -1,0 +1,17 @@
+# Dataset: 10B-213_sb1565042_1.55507.59912078704_Q
+# Archived from the v0.5.1 config.ini, lines 537-565 (commented block).
+# The archived block only held [globals], [sources]; all other keys take the defaults of
+#   configs/template.toml (the v0.5 run used whatever the rest of config.ini held then).
+
+[globals]
+experiment_name = "10B-213_sb1565042_1.55507.59912078704_Q"
+working_directory = "/media/sagauga/galnet/astronomical-data/LIRGI_Sample_v2/UGC05101/VLA_C_Q/10B-213_sb1565042_1.55507.59912078704_Sy_v5/"
+asdm_file = "/media/sagauga/galnet/astronomical-data/LIRGI_Sample_v2/UGC05101/VLA_C_Q/10B-213_sb1565042_1.55507.59912078704_Sy_v5/10B-213_sb1565042_1.55507.59912078704_Q"
+
+[sources]
+flux_calibrator = "J0542+4951"
+bandpass_calibrator = "J0542+4951"
+phase_calibrator = "J0958+6533"
+target = "UGC5101"
+transfer = "0,1"
+reference = "0"

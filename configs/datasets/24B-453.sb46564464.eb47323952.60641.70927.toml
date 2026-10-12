@@ -1,0 +1,17 @@
+# Dataset: 24B-453.sb46564464.eb47323952.60641.70927
+# Archived from the v0.5.1 config.ini, lines 270-298 (commented block).
+# The archived block only held [globals], [sources]; all other keys take the defaults of
+#   configs/template.toml (the v0.5 run used whatever the rest of config.ini held then).
+
+[globals]
+experiment_name = "24B-453.sb46564464.eb47323952.60641.70927"
+working_directory = "/home/lucatelli/astronomical_data/LIRGI_Sample_v2/IRAS19542+1110/VLA_A_C/24B-453.sb46564464.eb47323952.60641.70927_Sy_v5/"
+asdm_file = "/home/lucatelli/astronomical_data/LIRGI_Sample_v2/IRAS19542+1110/VLA_A_C/24B-453.sb46564464.eb47323952.60641.70927_Sy_v5/24B-453.sb46564464.eb47323952.60641.70927"
+
+[sources]
+flux_calibrator = "1331+305=3C286"
+bandpass_calibrator = "1331+305=3C286"
+phase_calibrator = "J1950+0807"
+target = "IRAS 19542+111"
+transfer = "0,1"
+reference = "0"

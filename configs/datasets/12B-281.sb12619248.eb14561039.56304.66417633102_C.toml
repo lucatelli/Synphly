@@ -1,0 +1,18 @@
+# Dataset: 12B-281.sb12619248.eb14561039.56304.66417633102_C
+# Archived from the v0.5.1 config.ini, lines 91-120 (commented block).
+# The archived block only held [globals], [sources]; all other keys take the defaults of
+#   configs/template.toml (the v0.5 run used whatever the rest of config.ini held then).
+
+[globals]
+experiment_name = "12B-281.sb12619248.eb14561039.56304.66417633102_C"
+working_directory = "/media/sagauga/void/mart_data/12B-281/observation.56304.66419097222/C_band/"
+asdm_file = "/media/sagauga/void/mart_data/12B-281/observation.56304.66419097222/C_band/12B-281.sb12619248.eb14561039.56304.66417633102_C"
+do_hanning = true
+
+[sources]
+flux_calibrator = "3C286"
+bandpass_calibrator = "3C286"
+phase_calibrator = "1,1,4,4,4"
+target = "2,3,5,6,7"
+transfer = "0,1,4"
+reference = "0"

@@ -1,0 +1,17 @@
+# Dataset: 15A-297.sb30880117.eb30962132.57192.22020297454_K
+# Archived from the v0.5.1 config.ini, lines 566-594 (commented block).
+# The archived block only held [globals], [sources]; all other keys take the defaults of
+#   configs/template.toml (the v0.5 run used whatever the rest of config.ini held then).
+
+[globals]
+experiment_name = "15A-297.sb30880117.eb30962132.57192.22020297454_K"
+working_directory = "/media/sagauga/void/astronomical-data/LIRGI_Sample_v2/NGC5256/VLA_A_K/15A-297.sb30880117.eb30962132.57192.22020297454_Sy_v5/"
+asdm_file = "/media/sagauga/void/astronomical-data/LIRGI_Sample_v2/NGC5256/VLA_A_K/15A-297.sb30880117.eb30962132.57192.22020297454_Sy_v5/15A-297.sb30880117.eb30962132.57192.22020297454_K"
+
+[sources]
+flux_calibrator = "1331+305=3C286"
+bandpass_calibrator = "1331+305=3C286"
+phase_calibrator = "J1419+5423"
+target = "ngc5256"
+transfer = "0,1"
+reference = "0"

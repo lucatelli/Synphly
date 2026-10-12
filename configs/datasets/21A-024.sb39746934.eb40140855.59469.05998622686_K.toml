@@ -1,0 +1,15 @@
+# Dataset: 21A-024.sb39746934.eb40140855.59469.05998622686_K (K band, 64 spw, 27 antennas)
+# Fields: 0 3C286 (setup scan only, ignored), 1 1331+305=3C286 (flux), 2 J1733-1304 (bandpass),
+#         3 J1743-0350 (phase), 4 IR17578-0400 (target). Roles are found from the scan intents.
+#
+# Run:  synphly run configs/datasets/21A-024.sb39746934.eb40140855.59469.05998622686_K.toml
+# Every key not set here takes the default of configs/template.toml (= the v0.5.1 active config).
+
+[globals]
+experiment_name = "21A-024.sb39746934.eb40140855.59469.05998622686_K"
+working_directory = "/media/sagauga/galnet/Sy_v6_test/21A-024.sb39746934.eb40140855.59469.05998622686_Sy_v6/"
+# The MS <working_directory>/<experiment_name>.ms already exists, so importasdm is skipped.
+asdm_file = "/media/sagauga/galnet/Sy_v6_test/21A-024.sb39746934.eb40140855.59469.05998622686_Sy_v6/21A-024.sb39746934.eb40140855.59469.05998622686_K"
+
+[calibrate]
+band = "K"

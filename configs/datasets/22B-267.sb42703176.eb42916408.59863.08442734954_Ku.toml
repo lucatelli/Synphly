@@ -1,0 +1,17 @@
+# Dataset: 22B-267.sb42703176.eb42916408.59863.08442734954_Ku
+# Archived from the v0.5.1 config.ini, lines 31-60 (commented block).
+# The archived block only held [globals], [sources]; all other keys take the defaults of
+#   configs/template.toml (the v0.5 run used whatever the rest of config.ini held then).
+
+[globals]
+experiment_name = "22B-267.sb42703176.eb42916408.59863.08442734954_Ku"
+working_directory = "/media/sagauga/void/astronomical-data/LIRGI_Sample_v2/NGC6786/VLA_C_Ku/22B-267.sb42703176.eb42916408.59863.08442734954_vla_pipe/22B-267/observation.59863.085712962966/"
+asdm_file = "/media/sagauga/void/astronomical-data/LIRGI_Sample_v2/NGC6786/VLA_C_Ku/22B-267.sb42703176.eb42916408.59863.08442734954_vla_pipe/22B-267/observation.59863.085712962966/22B-267.sb42703176.eb42916408.59863.08442734954_Ku"
+
+[sources]
+flux_calibrator = "3C48"
+bandpass_calibrator = "3C48"
+phase_calibrator = "1,3,5,7,10,13,13,16,18"
+target = "2,4,6,8,11,14,15,17,19"
+transfer = "0,1,3,5,7,10,13,16,18"
+reference = "0"

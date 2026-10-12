@@ -1,0 +1,17 @@
+# Dataset: 20A-501.sb38231264.eb38644331.59105.30048638889
+# Archived from the v0.5.1 config.ini, lines 707-737 (commented block).
+# The archived block only held [globals], [sources]; all other keys take the defaults of
+#   configs/template.toml (the v0.5 run used whatever the rest of config.ini held then).
+
+[globals]
+experiment_name = "20A-501.sb38231264.eb38644331.59105.30048638889"
+working_directory = "/mnt/scratch/lucatelli/astronomical-data/SED_study/IRAS22491-1808/VLA_B_C/20A-501.sb38231264.eb38644331.59105.30048638889_Sy_v5/"
+asdm_file = "/mnt/scratch/lucatelli/astronomical-data/SED_study/IRAS22491-1808/VLA_B_C/20A-501.sb38231264.eb38644331.59105.30048638889_Sy_v5/20A-501.sb38231264.eb38644331.59105.30048638889"
+
+[sources]
+flux_calibrator = "0542+498=3C147"
+bandpass_calibrator = "0542+498=3C147"
+phase_calibrator = "J2246-1206 p"
+target = "IRAS22491-1808"
+transfer = "0,1"
+reference = "0"

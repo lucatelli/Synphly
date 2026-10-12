@@ -1,0 +1,17 @@
+# Dataset: 22A-426.sb41538423.eb41849749.59743.355060497684_X
+# Archived from the v0.5.1 config.ini, lines 646-676 (commented block).
+# The archived block only held [globals], [sources]; all other keys take the defaults of
+#   configs/template.toml (the v0.5 run used whatever the rest of config.ini held then).
+
+[globals]
+experiment_name = "22A-426.sb41538423.eb41849749.59743.355060497684_X"
+working_directory = "/media/sagauga/void/astronomical-data/SED_study/IRAS17578-0400/VLA_A_X/22A-426.sb41538423.eb41849749.59743.355060497684_Sy_v5/"
+asdm_file = "/media/sagauga/void/astronomical-data/SED_study/IRAS17578-0400/VLA_A_X/22A-426.sb41538423.eb41849749.59743.355060497684_Sy_v5/22A-426.sb41538423.eb41849749.59743.355060497684_X"
+
+[sources]
+flux_calibrator = "1331+305=3C286"
+bandpass_calibrator = "1331+305=3C286"
+phase_calibrator = "J1743-0350"
+target = "IRAS17578-0400"
+transfer = "0,1"
+reference = "0"
