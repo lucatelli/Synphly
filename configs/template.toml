@@ -1,0 +1,240 @@
+# =====================================================================================================
+# Synphly configuration template
+# =====================================================================================================
+# This file is a REFERENCE: every key with its default value and an explanation. You do not run it and you
+# do not need to edit it. A dataset config (configs/datasets/<name>.toml) only needs the keys that differ from
+# these defaults; missing keys take the values shown here. To change an option, copy its key into your dataset
+# config, under the same [section].
+#
+# Starting a new dataset:
+#   synphly init <name> --wd <working dir> --asdm <SDM path>   # writes configs/datasets/<name>.toml
+#   synphly prepare configs/datasets/<name>.toml               # import, listobs, fields, suggested [sources]
+#   synphly run configs/datasets/<name>.toml --dry-run         # check (read-only)
+#   synphly run configs/datasets/<name>.toml
+# Old v0.5 INI files are still accepted, and can be converted with:
+#   python -m synphly convert-config config.ini configs/datasets/<name>.toml
+#
+# Recent VLA observations
+# -----------------------
+# In general only three keys are needed:
+#   [globals]
+#   experiment_name   = "11A-231_sb4455680_2.55806.745764444444"   # no .ms extension
+#   working_directory = "/data/directory/"
+#   asdm_file         = "/data/directory/11A-231_sb4455680_2.55806.745764444444"
+# If you have no ASDM file but already have the measurement set, set asdm_file to the name of the
+# measurement set (without .ms). Scan intents then give the calibrators and targets, and the other
+# options take the defaults below. Observations with several receivers (e.g. L, S and C bands) are
+# not supported: split the data per band first (by spectral window range).
+#
+# Early EVLA observations
+# -----------------------
+# Early observations need some prior information, which you can get from the listobs file
+# (run `synphly prepare <config>` first: it writes the listobs and shows the fields):
+#  1. Scan intents can be wrong (e.g. the flux calibrator has OBSERVE_TARGET instead of
+#     CALIBRATE_FLUX). Set the fields by hand in [sources]:
+#       flux_calibrator = "3C48", bandpass_calibrator = "3C48",
+#       phase_calibrator = "J0410+7656", target = "VIIZw031"
+#  2. One field name can have several field IDs (e.g. 3C48 has IDs 0 and 1, one of them for pointing
+#     or setup scans). fluxscale then fails. Set the VALID field IDs:
+#       transfer  = "0,2"   # fields that receive the flux scale (flux calibrator itself + phase cals)
+#       reference = "0"     # field ID of the flux calibrator, the flux scale reference
+#     Lists can also be written as TOML arrays, e.g. transfer = [0, 2].
+# =====================================================================================================
+
+[globals]
+# REQUIRED. Name of the measurement set to create/use, WITHOUT the .ms extension.
+experiment_name = ""
+# REQUIRED. Directory where all data products are written.
+working_directory = ""
+# Path of the ASDM to import. If you have no ASDM, set it equal to the MS name without .ms.
+asdm_file = ""
+# Import the ASDM (importasdm) if the MS does not exist yet.
+load_data = true
+# Only import the data and write listobs, then stop (legacy v0.5 switch; prefer `synphly prepare`).
+run_only_ms_info = false
+# Hanning smoothing of the imported data.
+do_hanning = false
+# Run AOFlagger through a singularity container, and the container path.
+use_singularity = false
+singularity_path = ""
+# Read MS metadata (fields, intents, spws). Leave true.
+ms_info = true
+# Detail level of the flag reports (integer, 3 = v0.5 default).
+report_verbosity = 3
+
+[sources]
+# Field names and/or field IDs, comma-separated (string or TOML array).
+# Empty -> taken from the scan intents of the MS.
+flux_calibrator = ""
+bandpass_calibrator = ""
+phase_calibrator = ""
+target = ""
+# VALID field IDs used by fluxscale. transfer: fields receiving the flux scale (flux calibrator itself,
+# phase calibrators, bandpass calibrator). reference: field ID of the flux calibrator.
+# Empty -> derived from the field roles (transfer = all calibrators, reference = flux calibrator).
+transfer = ""
+reference = ""
+# Optional explicit target -> phase calibrator mapping (names or IDs), e.g.
+#   phasecal_for_target = { NGC4278 = "J1221+2813", NGC3031 = "J0958+6533" }
+# Empty -> assigned automatically by time adjacency of the scans.
+phasecal_for_target = {}
+
+[flagging]
+# Master switch for the flagging block run before averaging.
+do_flagging = true
+# Pre-flagging: autocorrelations, shadowing, quack, pointing scans and edge channels.
+do_pre_flagging = true
+# Run AOFlagger (natively, or via singularity if globals.use_singularity = true).
+use_aoflagger = false
+# Run flagdata mode='tfcrop' on the native (DATA column) visibilities.
+do_tfcrop_raw = true
+# AOFlagger singularity image and Lua strategy file.
+aoflagger_sif = "/singularity_containers/lofar_aoflagger_3.1.0.sif"
+aoflagger_strategy = "./aoflagger_strategies/jvla-default.lua"
+# Manual flag command file (one flagdata command per line, e.g. mode='manual' scan='1'). Empty = none.
+manual_file = ""
+# Fraction of channels ignored at EACH spw edge for the calibration solves (e.g. 0.3 -> the central
+# 40% of the channels are used).
+edge_channel_frac = 0.2
+# Fraction of channels FLAGGED at each spw edge for calibrators / science targets, applied when
+# do_flag_edge_channels_cals / do_flag_edge_channels_science are true.
+edge_channel_flag_frac_cals = 0.06
+edge_channel_flag_frac_science = 0.03
+do_flag_edge_channels_cals = true
+do_flag_edge_channels_science = true
+# Flag scans with a *POINTING* intent during pre-flagging. Pointing scans may share a calibrator name and,
+# if left unflagged, enter the gain calibration. Only effective with do_pre_flagging = true.
+do_flag_pointing_scans = true
+# Re-apply the intent flags of pre-flagging (pointing, if do_flag_pointing_scans, UNSPECIFIED and
+# SYSTEM_CONFIGURATION) to the MS that is calibrated, right before initial_corrections (step intent_flagging).
+# Independent of do_flagging / do_pre_flagging. Idempotent with pre-flagging; it protects an .avg.ms that was
+# made from an MS without pre-flagging.
+do_intent_flagging = true
+# Quack (seconds) at the beginning / end of every scan, all fields (v0.5: 1 s and 1 s).
+quack_interval_beg = 1.0
+quack_interval_endb = 1.0
+# Extra quack (seconds) per field role, on top of the above. 0 = off (v0.5 behaviour).
+quack_extra_flux_beg = 0.0
+quack_extra_phase_beg = 0.0
+quack_extra_phase_endb = 0.0
+# Autoflagging of calibrated calibrator / science data: rflag | tfcrop | none,
+# on datacolumn corrected | residual | data (corrected or residual are good choices).
+cals_flag_mode_strategy = "rflag"
+cals_datacolumn_to_flag = "residual"
+science_flag_mode_strategy = "rflag"
+science_datacolumn_to_flag = "residual"
+# tfcrop/rflag parameters (see the CASA flagdata documentation).
+ntime = "scan"
+combinescans = false
+tfcrop_timecutoff_cals = 4.0
+tfcrop_freqcutoff_cals = 4.0
+tfcrop_freqcutoff_science = 4.0
+tfcrop_timecutoff_science = 4.0
+rflag_timedevscale_cals = 4.0
+rflag_freqdevscale_cals = 4.0
+rflag_timedevscale_science = 4.0
+rflag_freqdevscale_science = 4.0
+maxnpieces = 5
+winsize = 5
+# Clip the corrected data of the calibrators outside [clipmin, clipmax] (Jy) after pass-1 calibration.
+# Be careful if any source is brighter than clipmax (50 for safety, instead of 30).
+do_clip_data = true
+clipmin = 0.0
+clipmax = 50.0
+
+[average]
+# Average the data after flagging (flagging is always done on the native data). Skipped if the
+# .avg.ms already exists.
+do_average = true
+# Time averaging and its bin, e.g. "6s".
+time_avg = true
+timebin_avg = "6s"
+# Channel averaging. chan_out_avg is the number of OUTPUT channels per spw (not the averaging factor):
+# 128 channels with chan_out_avg = 64 -> factor 2. Must not exceed the channels of any spw.
+channel_avg = false
+chan_out_avg = 32
+
+[calibrate]
+# Initial corrections (antenna positions, gain curve, opacity).
+do_initial_cal = true
+# Set the flux calibrator model (Perley-Butler 2017).
+do_setjy = true
+# Reference antenna: "None" -> chosen automatically by the fraction of good solutions;
+# otherwise a list such as "ea12,ea13,ea02".
+do_refant = true
+refant = "None"
+# VLA band letter of the flux model: L, S, C, X, U (= Ku), K, A (= Ka), Q.
+# Note: for Ka band use "A", for Ku band use "U". Empty -> guessed from the observing frequency.
+band = ""
+# Bandpass-calibrator solves: delay (K), phase (G p), amplitude+phase (G ap), bandpass (BP).
+# Solution intervals are CASA solints: "inf", "int", "<n>s", "<n>min", "<n>s,<n>ch".
+bp_solint_K = "inf"
+minsnr_K = 3.0
+bp_solint_G_p = "18s"
+minsnr_bp_G_p = 3.0
+bp_solint_G_ap = "36s"
+bp_solint_BP = "inf"
+# minsnr of the gain solves on all calibrators.
+minsnr = 3.0
+# Gain solves on all calibrators: short/long phase, short/scan-combined amplitude+phase.
+all_solint_short_p = "18s"
+all_solint_short_ap = "36s"
+all_solint_long_p = "inf"
+all_solint_inf_ap = "inf"
+# applycal applymode for the bandpass calibrator, the gain calibrators and the science targets:
+# calflag | calflagstrict | trial | flagonly | flagonlystrict | calonly.
+bp_applymode = "calflag"
+ph_ap_applymode = "calflag"
+science_applymode = "calflagstrict"
+# bandpass fillgaps (channels).
+bp_fillgaps = 8
+# Pass 1: bandpass, gains, apply to the science targets (and split them, to check pass-1 quality),
+# with calibrated weights (calwt).
+do_bandpass_1st_run = true
+do_gain_calibration_1st_run = true
+do_apply_science_1st_run = true
+calwt_1st = true
+# Pass 2 (after autoflagging the pass-1 corrected data). calwt_2nd = false: weights are calibrated only once.
+do_bandpass_2nd_run = true
+do_gain_calibration_2nd_run = true
+calwt_2nd = false
+# Apply the final calibration to the science targets, then autoflag them.
+do_apply_science = true
+do_flag_science = true
+# statwt on the final calibrated data (may be unnecessary if calwt was applied).
+do_run_statwt = false
+statwt_timebin = "12s"
+statwt_statalg = "chauvenet"
+# Split the calibrated data per field; timebin_longer = timebin of the extra time-averaged copies.
+do_split = true
+timebin_longer = "6s"
+# Not used for now.
+timebin = "6s"
+width = 1
+solint = "60s"
+
+[fluxscale]
+# fluxscale fitorder: "auto" -> 1 if the fractional bandwidth >= fitorder_bw_threshold, else 0
+# (v0.5 behaviour); or "0" / "1".
+fitorder = "auto"
+fitorder_bw_threshold = 0.05
+# fluxscale incremental mode. false (v0.5): the fluxscale table replaces the ap gains when applied.
+incremental = false
+
+[imaging]
+# Basic tclean imaging with auto-multithresh masking (EXPERIMENTAL). parallel = true only under mpicasa.
+do_imaging = false
+imager = "tclean"
+parallel = false
+
+[plotting]
+# Plot backend: python | plotms | none. And what to plot.
+plot_backend = "python"
+plot_caltables = true
+plot_visibilities = true
+plot_flag_stats = true
+
+[pipeline]
+# Calibration table reuse: auto (reuse only if the recorded inputs match) | always (any existing table
+# with the expected name, v0.5 behaviour) | never (always recompute).
+reuse_tables = "auto"

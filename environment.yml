@@ -1,0 +1,21 @@
+# Conda environment for Synphly (modular CASA 6.7.3.21, Python 3.12).
+#   conda env create -f environment.yml && conda activate synphly
+# CASA packages are pinned to the versions Synphly v0.6 was validated with; the comments give the tested versions of the others.
+name: synphly
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - numpy>=2.0          # tested: 2.5.2
+  - scipy               # tested: 1.17.0
+  - matplotlib          # tested: 3.10.8
+  - astropy             # tested: 7.2.0 (image display after imaging)
+  - pytest              # tested: 9.0.2
+  - pip
+  - pip:
+      - casatools==6.7.3.21
+      - casatasks==6.7.3.21
+      - casadata==2025.9.22
+      - casaconfig==1.4.0
+      - casaplotms==2.8.2      # optional: only needed for [plotting] plot_backend = "plotms"
+      - -e .

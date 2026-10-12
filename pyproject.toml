@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "synphly"
+dynamic = ["version"]
+description = "A CASA pipeline for VLA/EVLA continuum calibration, plotting and basic imaging"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["numpy", "scipy", "matplotlib", "casatools", "casatasks"]
+
+[project.optional-dependencies]
+plotms = ["casaplotms"]
+test = ["pytest"]
+
+[project.scripts]
+synphly = "synphly.cli:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "synphly.__version__"}
+
+[tool.setuptools.packages.find]
+include = ["synphly*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+markers = ["integration: needs CASA and real data on disk"]
